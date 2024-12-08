@@ -14,3 +14,15 @@ data_validation:
   STATUS_FILE: artifacts/data_validation/status.txt
   ALL_REQUIRED_FILES: ["ted_main.csv", "transcripts.csv"]
   required_columns: ["title", "transcript"]
+
+
+data_standardization:
+  input_file_directory: "artifacts/data_ingestion"
+  output_dir: "artifacts/data_standardization"
+  nltk_dir: "artifacts/models"
+  output_file: "standardized_data.csv"
+  ALL_REQUIRED_FILES: ["ted_main.csv", "transcripts.csv"]
+  text_columns: ['description', 'title', 'transcript']
+  relevant_fields: ['description', 'tags', 'title', 'ratings', 'url']
+  merging_key: 'url'
+  

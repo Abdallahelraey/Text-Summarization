@@ -1,7 +1,8 @@
 from TextSummarizer.constants import *
 from TextSummarizer.utils.file_utils import *
 from TextSummarizer.utils.config_utils import *
-from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig)
+from TextSummarizer.utils.lib_utils import *
+from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataStandardizationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -45,9 +46,24 @@ class ConfigurationManager:
         
         return data_validation_config
  
+    def get_data_standardization_config(self) -> DataStandardizationConfig:
+        config = self.config.data_standardization
+        create_directories([config.output_dir])
+        data_standardization_config = DataStandardizationConfig(
+            input_file_directory=config.input_file_directory,
+            output_dir = config.output_dir,
+            output_file = config.output_file,
+            ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
+            text_columns  = config.text_columns,
+            relevant_fields = config.relevant_fields,
+            merging_key = config.merging_key,
+            nltk_dir = config.nltk_dir
+            #output_file_path=os.path.join(config.output_dir, config.output_file)
+   
+        )
+        return data_standardization_config
     
-    
-    
+
     
     
     
