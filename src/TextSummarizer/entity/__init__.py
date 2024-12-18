@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List
-
+import torch
 
 @dataclass(frozen=True)
 class DataIngestionConfig:
@@ -44,3 +44,22 @@ class DataTransformationConfig:
     output_dir: Path 
     prefix: str 
     sample_size: int 
+    
+    
+@dataclass(frozen=True)
+class TrainingConfig:
+    root_dir: Path
+    data_path: Path
+    checkpoint: str
+    max_length: int
+    min_length: int
+    output_dir: str
+    learning_rate: float
+    train_batch_size: int
+    eval_batch_size: int
+    weight_decay: float
+    save_total_limit: int
+    num_train_epochs: int
+    prefix: str
+    push_to_hub: bool
+    device: str = "cuda" if torch.cuda.is_available() else "cpu"

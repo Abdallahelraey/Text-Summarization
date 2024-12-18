@@ -101,18 +101,19 @@ class DataTransformation:
         logger.info("Successfully loaded sampled dataset")
         return sampled_dataset_random
 
-    def save_dataset(self, dataset: DatasetDict):
+    def save_dataset(self, dataset: DatasetDict, dataset_name=None):
+        dataset_name = dataset_name
         save_dir = self.config.output_dir
+        save_path = os.path.join(save_dir, dataset_name)
         if not isinstance(dataset, DatasetDict):
             raise ValueError("Provided dataset is not a DatasetDict object")
 
-        logger.info(f"Saving DatasetDict to directory: {save_dir}")
+        logger.info(f"Saving DatasetDict to directory: {save_path}")
 
         try:
-            dataset.save_to_disk(save_dir)
-            logger.info(f"Dataset successfully saved to {save_dir}")
+            dataset.save_to_disk(save_path)
+            logger.info(f"Dataset successfully saved to {save_path}")
         except Exception as e:
-            logger.error(f"Failed to save dataset to {save_dir}: {e}")
+            logger.error(f"Failed to save dataset to {save_path}: {e}")
             raise e
-        
         

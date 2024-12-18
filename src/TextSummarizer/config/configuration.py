@@ -2,7 +2,7 @@ from TextSummarizer.constants import *
 from TextSummarizer.utils.file_utils import *
 from TextSummarizer.utils.config_utils import *
 from TextSummarizer.utils.lib_utils import *
-from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataStandardizationConfig,DataTransformationConfig)
+from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataStandardizationConfig,DataTransformationConfig,TrainingConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -83,3 +83,28 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_model_summarizer_config(self) -> TrainingConfig:
+        config = self.params.model
+
+        create_directories([config.root_dir])
+
+        model_summarize_config = TrainingConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            checkpoint = config.checkpoint,
+            max_length = config.max_length,
+            min_length = config.min_length,
+            output_dir = config.output_dir,
+            learning_rate = float(config.learning_rate),
+            train_batch_size = config.train_batch_size,
+            eval_batch_size = config.eval_batch_size,
+            weight_decay = config.weight_decay,
+            save_total_limit = config.save_total_limit,
+            num_train_epochs = config.num_train_epochs,
+            push_to_hub = config.push_to_hub,
+            device = config.device,
+            prefix = config.prefix
+        )
+
+        return model_summarize_config
