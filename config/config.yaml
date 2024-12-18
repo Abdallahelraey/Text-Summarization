@@ -26,3 +26,14 @@ data_standardization:
   relevant_fields: ['description', 'tags', 'title', 'ratings', 'url']
   merging_key: 'url'
   
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: "artifacts/data_standardization/standardized_data.csv"
+  checkpoint: "google-t5/t5-small"
+  max_length: 1024
+  min_length: 40
+  output_dir: artifacts/data_transformation
+  prefix: "summarize: "
+  sample_size: 20
+

@@ -157,10 +157,11 @@ class DataStandardization:
         return merged_df
 
     def save_data(self, data):
-        logger.info(f"Saving standardized data to {self.config.output_file}")
+        standerised_data_path = os.path.join(self.config.output_dir, self.config.output_file)
+        logger.info(f"Saving standardized data to {standerised_data_path}")
         try:
             # Save the standardized data
-            data.to_csv(self.config.output_file, index=False)
+            data.to_csv(standerised_data_path, index=False)
             logger.info("Data successfully saved")
         except Exception as e:
             logger.error(f"Error saving data: {str(e)}")

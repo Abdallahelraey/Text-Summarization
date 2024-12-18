@@ -31,3 +31,16 @@ class DataStandardizationConfig:
     relevant_fields: list
     merging_key: str
     nltk_dir: Path
+    
+    
+    
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path 
+    data_path: Path 
+    checkpoint: str 
+    max_length: int 
+    min_length: int 
+    output_dir: Path 
+    prefix: str 
+    sample_size: int 

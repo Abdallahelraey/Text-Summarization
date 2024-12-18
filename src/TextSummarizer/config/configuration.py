@@ -2,7 +2,7 @@ from TextSummarizer.constants import *
 from TextSummarizer.utils.file_utils import *
 from TextSummarizer.utils.config_utils import *
 from TextSummarizer.utils.lib_utils import *
-from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataStandardizationConfig)
+from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataStandardizationConfig,DataTransformationConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -66,4 +66,20 @@ class ConfigurationManager:
 
     
     
-    
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            max_length = config.max_length,
+            min_length = config.min_length,
+            output_dir = config.output_dir,
+            prefix = config.prefix,
+            checkpoint = config.checkpoint,
+            sample_size = config.sample_size
+        )
+
+        return data_transformation_config
