@@ -84,9 +84,9 @@ class SummarizationModel:
         logger.info("Training completed.")
         return trainer
 
-    def save_model(self, model):
+    def save_model(self, model, model_name: str="FTsummarizer_model"):
         logger.info("Saving model to output directory: %s", self.output_dir)
-        model.save_model(self.output_dir)
+        model.save_model(self.output_dir,model_name)
         logger.info("Model saved successfully.")
 
     def predict(self, text: str) -> str:

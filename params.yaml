@@ -4,7 +4,7 @@ model:
   checkpoint: "google-t5/t5-small"
   max_length: 1024
   min_length: 40
-  output_dir: "artifacts\\models\\FTsummarizer_model"
+  output_dir: "artifacts\\models"
   learning_rate: 2e-5
   train_batch_size: 16
   eval_batch_size: 16

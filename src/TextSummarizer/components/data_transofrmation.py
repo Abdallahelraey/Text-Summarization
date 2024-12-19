@@ -5,7 +5,7 @@ from TextSummarizer.utils.lib_utils import *
 from transformers import AutoTokenizer
 from datasets import Dataset
 from sklearn.model_selection import train_test_split
-from datasets import DatasetDict, load_dataset
+from datasets import DatasetDict, load_dataset 
 
 
 class DataTransformation:
@@ -117,3 +117,7 @@ class DataTransformation:
             logger.error(f"Failed to save dataset to {save_path}: {e}")
             raise e
         
+    def save_tokenizer(self, model_name: str="FTModel_Tokenzer"):
+        save_directory = "artifacts\models"
+        self.tokenizer.save_pretrained(os.path.join(save_directory,model_name) )
+        logger.info(f"Saving Tokenizer to directory: {os.path.join(save_directory,model_name)}")

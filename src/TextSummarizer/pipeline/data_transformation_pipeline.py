@@ -15,6 +15,7 @@ class DataTransformationPipeline:
         data_transformation.save_dataset(tokenized_dataset,dataset_name="transformed_dataset")
         sampled_dataset = data_transformation.data_sample_loader(tokenized_dataset)
         data_transformation.save_dataset(sampled_dataset,dataset_name="sampled_dataset")
+        data_transformation.save_tokenizer()
         
         
 if __name__ == "__main__":
