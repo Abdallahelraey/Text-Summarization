@@ -1,3 +1,4 @@
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from box.exceptions import BoxValueError
 import yaml
 from TextSummarizer.logging import logger
@@ -21,3 +22,12 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     except Exception as e:
         raise e
     
+class Settings(BaseSettings):
+
+    APP_NAME: str
+    APP_VERSION: str
+    class Config:
+        env_file = ".env"
+
+def get_settings():
+    return Settings()
