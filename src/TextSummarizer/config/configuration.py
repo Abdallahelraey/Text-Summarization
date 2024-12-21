@@ -2,7 +2,12 @@ from TextSummarizer.constants import *
 from TextSummarizer.utils.file_utils import *
 from TextSummarizer.utils.config_utils import *
 from TextSummarizer.utils.lib_utils import *
-from TextSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataStandardizationConfig,DataTransformationConfig,TrainingConfig)
+from TextSummarizer.entity import (DataIngestionConfig,
+                                   DataValidationConfig,
+                                   DataStandardizationConfig,
+                                   DataTransformationConfig,
+                                   TrainingConfig,
+                                   ViewersConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -108,3 +113,16 @@ class ConfigurationManager:
         )
 
         return model_summarize_config
+    
+    def get_viwers_config(self) -> ViewersConfig:
+        config = self.config.viewers
+
+        create_directories([config.root_dir])
+
+        viwers_config = ViewersConfig(
+        root_dir = config.root_dir,
+        text_to_text_module = config.text_to_text_module,
+        port = config.port
+        )
+
+        return viwers_config

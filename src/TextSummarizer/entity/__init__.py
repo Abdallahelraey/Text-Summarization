@@ -63,3 +63,9 @@ class TrainingConfig:
     prefix: str
     push_to_hub: bool
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
+    
+@dataclass(frozen=True)
+class ViewersConfig:
+    root_dir: Path
+    text_to_text_module: Path
+    port: int

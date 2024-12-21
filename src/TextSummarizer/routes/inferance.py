@@ -43,3 +43,12 @@ async def predict_route(text: str):
         return {"summary": result}  
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+def create_app():
+    app = FastAPI()
+    app.include_router(summarizer_router)
+    return app
+    
+if __name__ == "__main__":
+    app = create_app()
+    uvicorn.run(app, host="127.0.0.1", port=8000)

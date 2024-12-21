@@ -37,3 +37,8 @@ data_transformation:
   prefix: "summarize: "
   sample_size: 20
 
+viewers:
+  root_dir: artifacts/ui
+  text_to_text_module: "src/TextSummarizer/viewers/mesop_text_to_text.py"
+  port: 8080
+
