@@ -1,0 +1,24 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+*.env
+*.venv
+
+# Virtual Environment
+textsummarizer-env/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore artifacts and datasets
+artifacts/
+datasets/
+
+# Ignore Git and editor files
+.git/
+.vscode/
+.idea/
