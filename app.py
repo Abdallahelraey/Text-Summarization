@@ -6,6 +6,7 @@ import mesop as me
 import os
 from TextSummarizer.routes.inferance import create_app  
 from TextSummarizer.viewers.mesop_text_to_text import TextSummarizerUI
+from TextSummarizer.viewers.gradio_view import create_gradio_interface
 from TextSummarizer.config.configuration import ConfigurationManager
 from TextSummarizer.entity import ViewersConfig
 from TextSummarizer.logging import logger
@@ -22,8 +23,10 @@ class App:
         try:
             if self.mode == "api":
                 self.api_mode()
-            elif self.mode == "ui":
+            elif self.mode == "mesop":
                 self.ui_mode()
+            elif self.mode == "gradio":
+                self.gradio_ui()
             else:
                 raise ValueError("Invalid mode selected")
         except Exception as e:
@@ -48,10 +51,15 @@ class App:
             logger.exception(f"Unexpected error in UI mode: {e}")
             raise
 
+    def gradio_ui(self):
+        interface = create_gradio_interface()
+        interface.launch()
+        
+
 if __name__ == "__main__":
     logger.info("Starting the main program...")
     parser = argparse.ArgumentParser(description="Run the app in API or UI mode")
-    parser.add_argument("mode", choices=["api", "ui"], help="Choose between API or UI mode")
+    parser.add_argument("mode", choices=["api", "mesop", "gradio"], help="Choose between API or UI mode")
     args = parser.parse_args()
     logger.info(f"Command-line arguments parsed: {args}")
 

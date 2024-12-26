@@ -26,6 +26,10 @@ class Settings(BaseSettings):
 
     APP_NAME: str
     APP_VERSION: str
+    HUGGINGFACE_ACCESS_TOKEN: str
+    HUGGINGFACE_API_URL: str
+    MONGODB_CONNECTION_STRING: str
+    MONGODB_NAME: str
     class Config:
         env_file = ".env"
 

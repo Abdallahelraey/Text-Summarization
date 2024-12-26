@@ -1,5 +1,5 @@
 model:
-  root_dir: "artifacts\\data_transformation"
+  root_dir: "artifacts\\HFmodels" 
   data_path: "artifacts\\data_transformation\\sampled_dataset"
   checkpoint: "google-t5/t5-small"
   max_length: 1024
