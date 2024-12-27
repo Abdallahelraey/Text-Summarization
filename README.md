@@ -111,26 +111,50 @@ TEXT SUMMARIZATION/
    - Update `params.yaml` for model configurations and data URIs.
    - Update `config.yml` for tailored configuration.
 
-5. **Run the App Locally:**
+
+## How to Use the Text Summarization Pipeline (Run the App Locally)
+
+To trigger the text summarization pipeline, follow these steps:
+
+1. **Ensure you have all the required dependencies installed.** 
+2. **Run the following command to execute the pipeline:**
+
+```bash
+python main.py
+```
+
+This will initiate the pipeline, starting with data ingestion and progressing through data validation, standardization, transformation, and finally, model development for summarization.
+
+
 **When it comes to running the app you can chose one of three options via an argument that you can pass with the cli running command...**
-    a. If you want to use `API's` you can use:
-    ```bash
-    python app.py api
-    ```
+
+a. If you want to use `API's` you can use:
+```bash
+python app.py api
+```
+
 ![alt text](assets/API_Docs.png)
-    b. If you want to use `MesopUI` you can use:
-    ```bash
-    python app.py mesop
-    ```
+
+b. If you want to use `MesopUI` you can use:
+
+```bash
+python app.py mesop
+```
+
 ![alt text](assets/MesopUI.png)
-    c. If you want to use `GradioUI` you can use:
-    ```bash
-    python app.py gradio
-    ```
+
+c. If you want to use `GradioUI` you can use:
+
+```bash
+python app.py gradio
+```
+
 ![alt text](assets/GradioUI.png)
 
 6. **Run the model on the cloud via Huggin Face Spaces**
+
 ![alt text](assets/HF_Space.png)
+
 
 7. **Docker Setup (Optional):**
    ```bash
